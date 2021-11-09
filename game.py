@@ -108,15 +108,15 @@ class Game:
 		for block in self.player_body[:-1]:
 			if block == head_pos:
 				self.is_running = False
-				print("Game Over: You hit yourself!")
+				print("\nGame Over: You hit yourself!")
 
 		# check of de player tegen een muur botst
 		if head_pos[0] >= GRID_SIZE or head_pos[1] >= GRID_SIZE:
 			self.is_running = False
-			print("Game Over: You hit a wall!")
+			print("\nGame Over: You hit a wall!")
 		elif head_pos[0] < 0 or head_pos[1] < 0:
 			self.is_running = False
-			print("Game Over: You hit a wall!")
+			print("\nGame Over: You hit a wall!")
 
 		# check if de player de appel raakt
 		if self.apple_pos == head_pos:

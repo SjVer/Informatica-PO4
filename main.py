@@ -1,6 +1,7 @@
 # importeer de Game en Learn objecten
 from game import Game
 from learn import Learn
+from learn2 import Learn2
 from os import system
 
 MINSCORE = 7
@@ -9,7 +10,7 @@ MINSCORE = 7
 class App:
 	def __init__(self):
 		self.game : Game = Game(host=self)
-		self.learn : Learn = Learn(host=self)
+		self.learn : Learn = None
 		self.username : str = ""
 		self.group : int = 0
 
@@ -30,6 +31,17 @@ class App:
 		print(f"Welcome {username.title()} from group {group}!\n")
 		self.username = username.title()
 		self.group = group
+
+		ans = input("Do you want to do maths or spelling? [m/s]: ").lower()
+		while not ans in ['m', 's']:
+			print("Invalid answer, try again.") 
+			ans = input("Do you want to do maths or spelling? [m/s]: ").lower()
+		print()
+		
+		if ans == 'm':
+			self.learn = Learn(host=self)
+		elif ans == 's':
+			self.learn = Learn2(host=self)
 
 	def run(self):
 		"""run het programma"""
